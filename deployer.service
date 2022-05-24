@@ -2,11 +2,11 @@
 Description=deployer
 
 [Service]
-User=cloud-user
+User=ubuntu
 Type=simple
 Restart=always
 RestartSec=5s
-ExecStartPre=/bin/sh -c '/usr/local/go/bin/go build'
+ExecStartPre=/bin/sh -c '/usr/local/go/bin/go build -buildvcs=false'
 ExecStart=/home/cloud-user/deployer/deployer
 WorkingDirectory=/home/cloud-user/deployer/
 

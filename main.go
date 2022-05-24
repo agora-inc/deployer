@@ -30,9 +30,9 @@ func registerRoutes() http.Handler {
 		var cmd *exec.Cmd
 		if data.ServiceFileChanged {
 			fmt.Println("service file changed, reloading systemctl daemon")
-			cmd = exec.Command("/bin/sh", "-c", fmt.Sprintf("git pull && cp %s.service /etc/systemd/system/%s.service && systemctl daemon-reload && systemctl restart %s.service", data.Repo, data.Repo, data.Repo))
+			cmd = exec.Command("/bin/sh", "-c", fmt.Sprintf("sudo git pull && sudo cp %s.service /etc/systemd/system/%s.service && sudo systemctl daemon-reload && sudo systemctl restart %s.service", data.Repo, data.Repo, data.Repo))
 		} else {
-			cmd = exec.Command("/bin/sh", "-c", fmt.Sprintf("git pull && systemctl restart %s.service", data.Repo))
+			cmd = exec.Command("/bin/sh", "-c", fmt.Sprintf("sudo git pull && sudo systemctl restart %s.service", data.Repo))
 		}
 
 		cmd.Dir = fmt.Sprintf("/home/cloud-user/%s", data.Repo)
