@@ -2,13 +2,13 @@
 Description=deployer
 
 [Service]
-User=pi
+User=cloud-user
 Type=simple
 Restart=always
 RestartSec=5s
 ExecStartPre=/bin/sh -c '/usr/local/go/bin/go build'
-ExecStart=/home/pi/code/deployer/deployer
-WorkingDirectory=/home/pi/code/deployer/
+ExecStart=/home/cloud-user/deployer/deployer
+WorkingDirectory=/home/cloud-user/deployer/
 
 [Install]
 WantedBy=multi-user.target

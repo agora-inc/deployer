@@ -35,7 +35,7 @@ func registerRoutes() http.Handler {
 			cmd = exec.Command("/bin/sh", "-c", fmt.Sprintf("git pull && sudo systemctl restart %s.service", data.Repo))
 		}
 
-		cmd.Dir = fmt.Sprintf("/home/pi/code/%s", data.Repo)
+		cmd.Dir = fmt.Sprintf("/home/cloud-user/%s", data.Repo)
 		go cmd.Run()
 		w.WriteHeader(http.StatusOK)
 		// if err != nil {
